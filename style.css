@@ -1,0 +1,112 @@
+#canvas {
+    padding: 0;
+    margin: auto;
+    display: block;
+    border: 2px solid black;
+}
+
+#canvas2 {
+    padding: 0;
+    margin: auto;
+    display: block;
+    border: 100px solid black;
+}
+
+#items {
+    position: absolute;
+    margin: 490px auto 0;
+    width: fit-content;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.btn {
+    width: 150px;
+    height: 50px;
+    border: 1px solid #333;
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+    transition: 1s;
+  }
+
+  .btn::before, .btn::after {
+    position: absolute;
+    background: #eee;
+    z-index: -1;
+    transition: 1s;
+    content: '';
+  }
+
+  .btn::before {
+    height: 50px;
+    width: 130px;
+  }
+
+  .btn::after {
+    width: 150px;
+    height: 30px;
+  }
+
+  .noselect {
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+  }
+
+  .btn:hover::before {
+    width: 0px;
+    background: #fff;
+  }
+
+  .btn:hover::after {
+    height: 0px;
+    background: #fff;
+  }
+
+  .btn:hover {
+    background: #fff;;
+  }
+
+  body{
+    background: rgb(255,255,255);
+background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(175,175,175,0.5354516806722689) 50%, rgba(160,231,241,1) 100%);
+  }
+
+  td{
+      vertical-align:top;
+      padding: 50px;
+  }
+
+  div{
+      margin: 10px;
+  }
+
+input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #084cdf;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+    background: #0d45a5;
+}

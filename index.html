@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <title>Image Editor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <div style="position:absolute;top:12%;left:81%;">Choose Color</div>
+    <div style="position:absolute;top:15%;left:82%;width:10px;height:10px;background:green;" id="green" onclick="color(this)"></div>
+    <div style="position:absolute;top:15%;left:83%;width:10px;height:10px;background:blue;" id="blue" onclick="color(this)"></div>
+    <div style="position:absolute;top:15%;left:84%;width:10px;height:10px;background:red;" id="red" onclick="color(this)"></div>
+    <div style="position:absolute;top:17%;left:82%;width:10px;height:10px;background:yellow;" id="yellow" onclick="color(this)"></div>
+    <div style="position:absolute;top:17%;left:83%;width:10px;height:10px;background:orange;" id="orange" onclick="color(this)"></div>
+    <div style="position:absolute;top:17%;left:84%;width:10px;height:10px;background:black;" id="black" onclick="color(this)"></div>
+    <div style="position:absolute;top:20%;left:82%;">Eraser</div>
+    <div style="position:absolute;top:23%;left:82.5%;width:15px;height:15px;background:white;border:2px solid;" id="white" onclick="color(this)"></div>
+    <input type="button" value="undo" size="23" onclick="cUndo()" style="position:absolute;top:28%;left:81%;background:rgba(114, 114, 114, 0);border:2px solid;">
+    <input type="button" value="erase" size="23" onclick="cErase()" style="position:absolute;top:28%;left:84.5%;background:rgba(114, 114, 114, 0);border:2px solid;">
+    <div style="position:absolute;top:30%;left:81%">
+        <input type="checkbox" id="accept" name="accept" value="yes"> <a>Color eyedropper saved:</a> <a id="savedC">#NaN</a><br>
+        <input type="checkbox" id="select" name="select" value="yes"> <a>Select area to modify</a>
+        <br>
+        <a id="barva">#NaN</a><div id="barva2" >&zwnj;</div>
+        <br>
+        <button type="button" class="btn" id="crop" onclick="toggleCrop()">Crop</button><br>
+        <button type="button" class="btn" onclick="download()">Download</button>
+        <p id="cropInfo"></p>
+        <br>
+        <a id="x1">NA</a> <a id="y1">NA</a><br>
+        <a id="x2">NA</a> <a id="y2">NA</a><br>
+    </div>
+    <input type="file" id="inp" accept="image/*">
+    <div id="items">
+        <table><tr><td>
+            <h1 onclick="vanish('div1')">Blurs</h1>
+            <div class="modifiers" id="div1">
+                <button type="button" class="filter btn" value="BoxBlur">Box Blur</button>
+                <button type="button" class="filter btn" value="GaussianBlur">Gaussian Blur</button>
+            </div>
+            </td>
+            <td>
+        <h1 onclick="vanish('div2')">Pixel manipulation</h1>
+            <div class="modifiers" id="div2">
+                <button type="button" class="filter btn" value="Threshold">Threshold</button>
+                <button type="button" class="filter btn" value="Grayscale">Grayscale</button>
+                <button type="button" class="filter btn" value="BrightnessPlus">Brightness+</button>
+                <button type="button" class="filter btn" value="BrightnessMinus">Brightness-</button>
+            </div>
+            </td>
+            <td>
+            <h1 onclick="vanish('div3')">Edge and sharpness</h1>
+            <div class="modifiers" id="div3">
+                <button type="button" class="filter btn" value="Sobel">Sobel</button>
+                <button type="button" class="filter btn" value="Laplacian">Laplacian</button>
+                <button type="button" class="filter btn" value="Sharpen">Sharpen</button>
+                <button type="button" class="filter btn" value="Unsharpen">Unsharpen</button>
+            </div>
+            </td>
+            <td>
+            <h1 onclick="vanish('div4')">Color manipulation</h1>
+            <div class="modifiers" id="div4">
+                <button type="button" class="filter btn" value="Red">Isolate Red</button>
+                <button type="button" class="filter btn" value="Green">Isolate Green</button>
+                <button type="button" class="filter btn" value="Blue">Isolate Blue</button>
+                <button type="button" class="filter btn" value="Random">Ol' timey</button>
+                <button type="button" class="filter btn" value="BoostRed">Boost Red</button>
+                <button type="button" class="filter btn" value="BoostGreen">Boost Green</button>
+                <button type="button" class="filter btn" value="BoostBlue">Boost Blue</button>
+                <button type="button" class="filter btn" value="Inverse">Inverse</button>
+            </div>
+            </td>
+            <td>
+            <h1 onclick="vanish('div5')">Restore</h1>
+            <div class="modifiers" id="div5">
+                <button type="button" class="filter btn" value="Clear">Whiteout</button>
+                <button type="button" class="filter btn" value="Reload">Restore Original</button>
+                <button type="button" class="filter btn" value="undo">Undo</button>
+                <button type="button" class="filter btn" value="redo">Redo</button>
+            </div>
+            </td>
+        </tr>
+        </table>
+        <div style="text-align: center">
+            <h1 onclick="vanish('div6')">Histogram</h1>
+            <div id="div6">
+                <button onclick="chart()">Update chart</button>
+                <div id="chart-container"></div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <script src="main.js"></script>
+</body>
+
+</html>
